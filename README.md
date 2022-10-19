@@ -39,3 +39,8 @@ streamlit run ~/visualizer.py --server.maxUploadSize 1000
 ## Demo Video
 
 
+
+
+
+https://user-images.githubusercontent.com/52663918/196756393-236d5ad5-1bd0-41c4-a7c9-f1d4f67bff6c.mov
+
