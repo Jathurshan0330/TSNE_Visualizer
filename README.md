@@ -7,9 +7,9 @@ Visulaization of the learned representations are extremly important to deep lear
 
 The input file should be in .h5 format with following data:
 
-  1.'images' : Original Unnormalized images
-  2.'labels' : Labels (should be integers)
-  3.'tsne'   : Array of the features after applying tsne
+  - 'images' : Original Unnormalized images
+  - 'labels' : Labels (should be integers)
+  - 'tsne'   : Array of the features after applying tsne
   
 The following code block can be used as guide to save the files:
 
