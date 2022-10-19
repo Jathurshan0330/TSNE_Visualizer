@@ -1,7 +1,6 @@
 # TSNE_Visualizer
 
-Visulaization of the learned representations are extremly important to deep learning for interpretations. Additionally, tracing back to the original inputs from the features will give better understanding of the learned representations. In order to effiently conduct this task and support research, I created a simple interative tool using streamlit and bokeh. 
-
+Visualizing the learned representations is extremely important in deep learning for interpretations. Additionally, tracing back to the original inputs from the features will provide a better understanding of the learned representations. In order to efficiently conduct this task and support research, I created a simple interactive tool using streamlit and bokeh. This article will briefly guide you through the process.
 
 ### Input File format
 
