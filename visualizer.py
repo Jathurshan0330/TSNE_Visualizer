@@ -21,7 +21,7 @@ def main():
     
     # file_path = '/Users/jathurshanpradeepkumar/Documents/Harvard Research/Harvard Research/Nuclei Detection and Clustering/Cell_Analysis/TSNE_visualizer/ki67_tsne.h5'
     if uploaded_file is not None:
-        images, labels, tsne = load_data(uploaded_file)
+        images, labels, tsne,idx = load_data(uploaded_file)
 
         inten_scale = st.slider("Choose Scaling (intensity): ", min_value=0,   
                         max_value=255, value=30, step=1)
@@ -33,7 +33,7 @@ def main():
                         max_value=3, value=2, step=1)
 
         if st.button('Display T-SNE'):
-            plot_tsne(images,tsne,labels,n_components = n_components, inten_scale = inten_scale,num_classes = num_classes,norm_scale = norm_scale)
+            plot_tsne(images,tsne,labels,idx,n_components = n_components, inten_scale = inten_scale,num_classes = num_classes,norm_scale = norm_scale)
         # inten_scale = 30
         #norm_scale = 1250
         #num_classes =2
