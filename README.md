@@ -18,6 +18,7 @@ hf = h5py.File("~/data.h5", 'w')
 hf.create_dataset('images', data= "image data")
 hf.create_dataset('labels', data= "label data")
 hf.create_dataset('tsne', data= "tsne data")
+hf.create_dataset('id', data=idx)
 hf.close()
 ```
 
