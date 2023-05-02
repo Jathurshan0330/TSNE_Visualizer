@@ -45,7 +45,11 @@ def load_data(file_path):
     images = np.array(hf.get('images'))
     labels = np.array(hf.get('labels'))
     tsne = np.array(hf.get('tsne'))
-    return images, labels, tsne
+    if len(hf.keys())>3:
+        idx = np.array(hf.get('id'))
+        return images, labels, tsne, idx
+    else:
+        return images, labels, tsne
 
 def embeddable_image(data):
     img_data = data.astype(np.uint8)
@@ -55,7 +59,7 @@ def embeddable_image(data):
     for_encoding = buffer.getvalue()
     return 'data:image/png;base64,' + base64.b64encode(for_encoding).decode()
 
-def plot_tsne(images,tsne,labels,n_components = 2, inten_scale = 30,num_classes = 2,norm_scale = 1250):
+def plot_tsne(images,tsne,labels,idx,n_components = 2, inten_scale = 30,num_classes = 2,norm_scale = 1250):
     if n_components ==2:
         digits_df = pd.DataFrame(tsne, columns=('x', 'y'))
     elif n_components ==3: 
@@ -70,6 +74,7 @@ def plot_tsne(images,tsne,labels,n_components = 2, inten_scale = 30,num_classes 
     digits_df['image'] = list(map(embeddable_image, (images/norm_scale)*inten_scale))
     digits_df['min'] = [x.min() for x in images]
     digits_df['max'] = [x.max() for x in images]
+    digits_df['id'] = list(idx)
     datasource = ColumnDataSource(digits_df)
     
     color_mapping = CategoricalColorMapper(factors=[str(num_classes-1 - x) for x in [j for j in range (num_classes)]],
@@ -100,6 +105,10 @@ def plot_tsne(images,tsne,labels,n_components = 2, inten_scale = 30,num_classes 
         <div>
             <span style='font-size: 12px; color: #224499'>Max:</span>
             <span style='font-size: 12px'>@max</span>
+        </div>
+        <div>
+            <span style='font-size: 12px; color: #224499'>ID:</span>
+            <span style='font-size: 12px'>@id</span>
         </div>
     </div>
     """))
